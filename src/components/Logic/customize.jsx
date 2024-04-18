@@ -19,8 +19,10 @@ const Customize = () => {
         navigate('/ingredients');
     };
 
+    const backgroundImageUrl = 'https://images.unsplash.com/photo-1649437662540-36470c1ebd86?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
     return (
-        <div className="flex flex-col items-center justify-center h-screen bg-cover bg-center animate-gradient-x">
+        <div className="flex flex-col items-center justify-center h-screen bg-cover bg-center animate-gradient-x bg-gray-200" style={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="flex flex-col items-center justify-center">
                 <h1 className="text-2xl font-bold mb-8 text-black">Hey Viewer! It's your choice in here!!</h1>
                 {/* Display three buttons for the three options */}

@@ -96,8 +96,10 @@ const Automatic = () => {
         alert(orderDetails);
     };
 
+    const backgroundImageUrl = 'https://images.unsplash.com/photo-1649437662540-36470c1ebd86?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
     return (
-        <div className="max-w-lg mx-auto mt-8 p-4 bg-white rounded-lg shadow-md">
+        <div className="max-w-lg mx-auto mt-8 p-4 bg-yellow-200 rounded-lg shadow-md" style={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <h2 className="text-lg font-semibold mb-4">Automatic Biscuit Selection</h2>
             <div className="mb-4">
                 <h3 className="text-md font-medium mb-2">Select Ingredients:</h3>
@@ -125,7 +127,7 @@ const Automatic = () => {
                 </ul>
             </div>
             <div className="mb-4">
-                <p className="text-md font-medium mb-2">Total Cost: ${totalCost.toFixed(2)}</p>
+                <p className="text-md font-medium mb-2">Total Cost: {totalCost.toFixed(2)}</p>
                 <p className="text-md font-medium mb-2">Manufacture Time: {manufactureTime} minutes</p>
                 <p className="text-md font-medium mb-2">Total Calories: {totalCalories}</p>
             </div>

@@ -28,10 +28,11 @@ export default function TriangleBiscuit() {
             window.location.href = '/bill'; // Change the URL as needed
         }
     };
+    const backgroundImageUrl = 'https://plus.unsplash.com/premium_photo-1663840074768-b956b2d024fe?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
 
     return (
-        <div className="flex items-center justify-center space-x-4 font-serif">
-            <img src="https://cdn.vectorstock.com/i/preview-1x/58/41/sweet-biscuit-icon-cartoon-cracker-food-vector-44435841.jpg" alt="Round" className="h-48 rounded-lg " />
+        <div className="flex items-center justify-center space-x-4 font-serif" style={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 75}}>
             <div>
                 <h2 className="text-xl font-semibold mb-4">Snickerdoodle Cookies</h2>
                 <p className="text-lg mb-4">

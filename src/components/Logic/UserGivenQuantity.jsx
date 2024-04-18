@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 const UserGivenQuantity = () => {
     const [orders, setOrders] = useState({
         'Barazek (Circle)': 0,
@@ -11,16 +12,6 @@ const UserGivenQuantity = () => {
     const [totalCost, setTotalCost] = useState(0);
     const [manufactureTime, setManufactureTime] = useState(0);
     const [totalCalories, setTotalCalories] = useState(0);
-
-    const inventory = {
-        Flour: { quantity: 5000, unit: 'g', costPerUnit: 0.5, caloriesPerUnit: 19 },
-        Sugar: { quantity: 3000, unit: 'g', costPerUnit: 0.8, caloriesPerUnit: 48 },
-        Butter: { quantity: 2000, unit: 'g', costPerUnit: 1.2, caloriesPerUnit: 39 },
-        ChocolateChips: { quantity: 1000, unit: 'g', costPerUnit: 2.5, caloriesPerUnit: 26 },
-        VanillaExtract: { quantity: 500, unit: 'ml', costPerUnit: 3.0, caloriesPerUnit: 8 },
-        BakingPowder: { quantity: 200, unit: 'g', costPerUnit: 0.3, caloriesPerUnit: 12 },
-        Oil: { quantity: 2000, unit: 'ml', costPerUnit: 1.2, caloriesPerUnit: 32 }
-    };
 
     const biscuitShapes = ['Barazek (Circle)', 'Dalgona (Square)', 'Gingerbread (Star)', 'SnickerDoodle (Triangle)'];
 
@@ -38,13 +29,12 @@ const UserGivenQuantity = () => {
 
         biscuitShapes.forEach(shape => {
             const quantity = orders[shape];
-            const ingredientsCost = calculateIngredientsCost();
             const shapeCost = calculateShapeCost(shape);
             const shapeTime = calculateShapeTime(shape);
             const shapeCalories = calculateShapeCalories(shape);
 
-            totalCost += (ingredientsCost + shapeCost) * quantity;
-            manufactureTime += (shapeTime * quantity)  /22 ;
+            totalCost += shapeCost * quantity;
+            manufactureTime += (shapeTime * quantity) / 22;
             totalCalories += shapeCalories * quantity;
         });
 
@@ -58,14 +48,6 @@ const UserGivenQuantity = () => {
         'Dalgona (Square)': 'https://static.vecteezy.com/system/resources/thumbnails/002/355/565/small_2x/square-biscuit-in-cartoon-style-isolated-free-vector.jpg',
         'Gingerbread (Star)': 'https://png.pngtree.com/png-vector/20230909/ourmid/pngtree-christmas-cookie-star-png-image_10011830.png',
         'SnickerDoodle (Triangle)': 'https://cdn.vectorstock.com/i/preview-1x/58/41/sweet-biscuit-icon-cartoon-cracker-food-vector-44435841.jpg'
-    };
-
-    const calculateIngredientsCost = () => {
-        let ingredientsCost = 0;
-        Object.values(inventory).forEach(item => {
-            ingredientsCost *= item.quantity ;
-        });
-        return ingredientsCost;
     };
 
     const calculateShapeCost = (shape) => {
@@ -115,10 +97,11 @@ const UserGivenQuantity = () => {
                 return 0;
         }
     };
+    const backgroundImageUrl = 'https://images.unsplash.com/photo-1651400846434-ccd0e95b56b9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
 
     return (
-        <Link to='/user-given-quantity'>
-        <div className="max-w-lg mx-auto mt-8 p-4 bg-white rounded-lg shadow-md">
+        <div className="max-w-lg mx-auto mt-8 p-4 bg-yellow rounded-lg shadow-md" style={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <h2 className="text-lg font-semibold mb-4">Enter your preferred numbers of biscuits</h2>
             {biscuitShapes.map(shape => (
                 <div key={shape} className="flex items-center justify-between mb-4">
@@ -137,14 +120,12 @@ const UserGivenQuantity = () => {
                 Place Order
             </button>
             <div className="mt-4">
-                <p className="text-md font-medium mb-2">Total Cost: ${totalCost.toFixed(2)}</p>
-                <p className="text-md font-medium mb-2">Manufacture Time: {manufactureTime} minutes</p>
+                <p className="text-md font-medium mb-2">Total Cost: {totalCost.toFixed(2)}</p>
+                <p className="text-md font-medium mb-2">Manufacture Time: {manufactureTime.toFixed(2)} minutes</p>
                 <p className="text-md font-medium mb-2">Total Calories: {totalCalories}</p>
             </div>
         </div>
-        </Link>
     );
 };
 
 export default UserGivenQuantity;
-

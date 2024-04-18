@@ -99,8 +99,10 @@ const IngredientsPage = () => {
     calculateTotalCost();
   };
 
+
+
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto bg-gray-200" >
       <h2 className="text-2xl font-bold mb-4">Ingredient Quantities</h2>
       <form onSubmit={handlePlaceOrder} className="mb-8">
         <table className="w-full border-collapse border border-gray-300">
@@ -204,7 +206,7 @@ const IngredientsPage = () => {
 
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Total Calories: {totalCalories}</h2>
-        <h2 className="text-2xl font-bold mb-4">Total Cost: ${totalCost}</h2>
+        <h2 className="text-2xl font-bold mb-4">Total Cost: {totalCost}</h2>
       </div>
     </div>
   );
